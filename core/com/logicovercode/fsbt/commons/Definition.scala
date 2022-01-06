@@ -42,6 +42,3 @@ case class DbService(private val sbtServiceDescription : SbtServiceDescription, 
   override def sbtServiceDescriptions: Seq[SbtServiceDescription] = Seq(sbtServiceDescription)
 }
 
-case class FSbtResolver(name : String, url : String)
-case class FSbtLicense(name : String, url : String)
-
