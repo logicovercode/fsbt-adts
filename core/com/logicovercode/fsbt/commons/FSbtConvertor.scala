@@ -23,3 +23,5 @@ trait FSbtConvertor {
     }
   }
 }
+
+object FSbtConvertor extends FSbtConvertor
