@@ -42,8 +42,6 @@ licenses += ("MIT", url("https://opensource.org/licenses/MIT"))
 //publishMavenStyle := true
 publishTo := Some(Opts.resolver.sonatypeStaging)
 
-//below is not yet working as expected (exploring ...)
 publishConfiguration := publishConfiguration.value.withOverwrite(true)
-publishLocalConfiguration := publishLocalConfiguration.value.withOverwrite(true)
 
 val fSbtAdtsProject = project in file(".")
