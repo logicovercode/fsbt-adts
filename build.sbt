@@ -1,13 +1,13 @@
 name := "fsbt-adts"
 
-version := "0.0.001"
+version := "0.0.002"
 
 scalaVersion := "2.13.7"
 
 crossScalaVersions := Seq("2.12.15", "2.13.7")
 
 libraryDependencies ++= Seq(
-  "com.logicovercode" %% "docker-core" % "0.0.004",
+  "com.logicovercode" %% "docker-core" % "0.0.005",
   "org.scalatest" %% "scalatest" % "3.2.10" % Test
 )
 
