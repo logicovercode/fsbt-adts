@@ -20,7 +20,7 @@ case class SbtServiceDescription(container: ContainerDefinition,
                                  imagePullTimeout : FiniteDuration,
                                  containerStartTimeout : FiniteDuration)
 
-trait SbtMicroservice{
+sealed trait SbtService{
   def sbtServiceDescriptions : Seq[SbtServiceDescription]
   def networks() : Seq[DockerNetwork] = {
     (for{
@@ -30,7 +30,7 @@ trait SbtMicroservice{
   }
 }
 
-case class ClusterService(override val sbtServiceDescriptions : Seq[SbtServiceDescription]) extends SbtMicroservice
+case class MicroService(override val sbtServiceDescriptions : SbtServiceDescription*) extends SbtService
 
 case class SbtFlywayConfig(url : String,
                             userName : String, password : String,
@@ -38,7 +38,7 @@ case class SbtFlywayConfig(url : String,
   val baseLineOnMigrate : Boolean = true
   val baseLineVersion = "0"
 }
-case class DbService(private val sbtServiceDescription : SbtServiceDescription, sbtFlywayConfig: SbtFlywayConfig) extends SbtMicroservice {
+case class DbService(private val sbtServiceDescription : SbtServiceDescription, sbtFlywayConfig: SbtFlywayConfig) extends SbtService {
   override def sbtServiceDescriptions: Seq[SbtServiceDescription] = Seq(sbtServiceDescription)
 }
 
